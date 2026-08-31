@@ -1,0 +1,57 @@
+{
+  "providers": {
+    "gemini": {
+      "models": {
+        "page": "gemini-2.0-flash",
+        "define-word": "gemini-2.0-flash",
+        "translate": "gemini-2.0-flash",
+        "image": "imagen-3.0-generate-002"
+      }
+    },
+    "openai": {
+      "models": {
+        "page": "gpt-4o-mini",
+        "define-word": "gpt-4o-mini",
+        "translate": "gpt-4o-mini",
+        "image": "gpt-image-1"
+      }
+    },
+    "anthropic": {
+      "models": {
+        "page": "claude-3-5-haiku-latest",
+        "define-word": "claude-3-5-haiku-latest",
+        "translate": "claude-3-5-haiku-latest"
+      }
+    },
+    "local": {
+      "models": {
+        "page": "llama3.1:8b",
+        "define-word": "llama3.1:8b",
+        "translate": "llama3.1:8b"
+      }
+    },
+    "nous": {
+      "models": {
+        "page": "tencent/hy3:free",
+        "define-word": "tencent/hy3:free",
+        "translate": "tencent/hy3:free",
+        "image": "tencent/hy3:free"
+      }
+    },
+    "openrouter": {
+      "models": {
+        "page": "openai/gpt-4o-mini",
+        "define-word": "openai/gpt-4o-mini",
+        "translate": "openai/gpt-4o-mini",
+        "image": "openai/dall-e-3"
+      }
+    }
+  },
+  "policies": {
+    "page": { "task": "page", "chain": [ { "provider": "nous", "retries": 2, "backoffMs": 600 }, { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "openai", "retries": 2, "backoffMs": 600 }, { "provider": "local", "retries": 1 } ], "sanitize": true },
+    "define-word": { "task": "define-word", "chain": [ { "provider": "nous", "retries": 2, "backoffMs": 600 }, { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "openai", "retries": 2, "backoffMs": 600 } ], "sanitize": true },
+    "translate": { "task": "translate", "chain": [ { "provider": "nous", "retries": 2, "backoffMs": 600 }, { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "anthropic", "retries": 2, "backoffMs": 600 } ] },
+    "image": { "task": "image", "chain": [ { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "openai", "retries": 2, "backoffMs": 600 }, { "provider": "gemini", "retries": 2, "backoffMs": 600 } ] }
+  },
+  "sanitize": true
+}
