@@ -5,6 +5,9 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // GitHub Pages serves from a subpath (/StoryMagic/), so set the base to match.
+    // Without this, built asset URLs are root-relative and 404 on Pages (blank page).
+    base: '/StoryMagic/',
     // STORYMAGIC_DEMO=true flips the app into zero-key Demo Mode at build time
     // (used for the public read-only demo site). Dev/preview can also use ?demo.
     define: {
