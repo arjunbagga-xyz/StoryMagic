@@ -48,10 +48,10 @@
     }
   },
   "policies": {
-    "page": { "task": "page", "chain": [ { "provider": "nous", "retries": 2, "backoffMs": 600 }, { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "openai", "retries": 2, "backoffMs": 600 }, { "provider": "local", "retries": 1 } ], "sanitize": true },
+    "page": { "task": "page", "chain": [ { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "nous", "retries": 1, "backoffMs": 400 }, { "provider": "openai", "retries": 1 }, { "provider": "local", "retries": 1 } ], "sanitize": true },
     "define-word": { "task": "define-word", "chain": [ { "provider": "nous", "retries": 2, "backoffMs": 600 }, { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "openai", "retries": 2, "backoffMs": 600 } ], "sanitize": true },
     "translate": { "task": "translate", "chain": [ { "provider": "nous", "retries": 2, "backoffMs": 600 }, { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "anthropic", "retries": 2, "backoffMs": 600 } ] },
-    "image": { "task": "image", "chain": [ { "provider": "openrouter", "retries": 2, "backoffMs": 600 }, { "provider": "openai", "retries": 2, "backoffMs": 600 }, { "provider": "gemini", "retries": 2, "backoffMs": 600 } ] }
+    "image": { "task": "image", "chain": [ { "provider": "gemini", "retries": 2, "backoffMs": 600 }, { "provider": "openrouter", "retries": 1, "backoffMs": 400 } ], "sanitize": true }
   },
   "sanitize": true
 }
